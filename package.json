@@ -1,0 +1,29 @@
+{
+  "name": "gsd",
+  "version": "0.0.1",
+  "description": "Get Stuff Done App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsfeb26/gsd.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "react",
+    "redux"
+  ],
+  "author": "Jason Stinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsfeb26/gsd/issues"
+  },
+  "homepage": "https://github.com/jsfeb26/gsd#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongoose": "^4.1.3"
+  }
+}

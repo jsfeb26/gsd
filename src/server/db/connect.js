@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var env = require('../environment');
-var config = require('./config');
+//var config = require('./config');
 
-mongoose.connect(config[env].url);
+//mongoose.connect(config[env].url);
+mongoose.connect("mongodb://localhost/gsd-dev");

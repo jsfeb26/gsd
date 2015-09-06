@@ -1,3 +1,6 @@
+// Simply creates WebpackDevServer and runs it on localhost:5001
+// Calls config file from webpack.config.dev.js
+
 import WebpackDevServer from "webpack-dev-server";
 import webpack from "webpack";
 import config from "../../webpack.config.dev";

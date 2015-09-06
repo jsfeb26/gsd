@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'inline-source-map',
-  entry: [
+  entry: [ // entry point for webpack-dev-server to enter
     'webpack-dev-server/client?http://localhost:5001',
     'webpack/hot/only-dev-server',
     './src/client/entry',
@@ -21,8 +21,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?experimental'], exclude: /node_modules/ },
-      { test: /\.json$/, loader: 'json!.file.json' }
+      { test: /\.jsx?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+      { test: /\.json$/, loader: 'json-loader' }
     ]
   }
 }

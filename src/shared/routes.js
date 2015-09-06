@@ -1,8 +1,13 @@
+// react-router routes that link client and server
+
 import { Route } from "react-router";
 import React from "react";
 
-import AppController from "./components/AppController";
+import Application from "./components/Application";
 
 export default (
-  <Route handler={ AppController } path="/" />
+  <Route handler={ Application } path="/">
+    //<Route path="additem/">
+   </Route>
+  </Route>
 );

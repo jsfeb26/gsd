@@ -1,37 +1,80 @@
 require('./db/connect'); // connects to the mongo database
 import express from "express";
 import bodyParser from "body-parser";
-//import itemRoutes from "./routes/item";
+import qs from 'qs';
 import React from "react";
 import Router from "react-router";
+import { Provider } from 'react-redux';
+import routes from "../shared/routes"; // react-router routes
+import rootReducer from '../shared/reducers/index';
+import configureStore from '../shared/store/configureStore';
+
 const app = express();
+const port = 5000;
 
-// set up Jade
-app.set('views', './views');
-app.set('view engine', 'jade');
+// app.use(bodyParser.json());
+// app.use(express.static('public'));
 
-//app.use(bodyParser.json());
-//app.use(express.static('public'));
+// Route Handler for all routes
+// And then use react-router to handle all routes
+// This is fired every time the sever side recieves a request
+app.use(handleRender);
 
-import routes from "../shared/routes";
+function handleRender(req, res) {
+  const params = qs.parse(req.query);
 
-app.get('/*', function(req, res) {
+  let initialState = {};
+
+  // Create a new Redux store instance
+  const store = configureStore(initialState);
+
+  // use req.url to render a string based on react-router routes
+  // Handler is built in to react-router
   Router.run(routes, req.url, Handler => {
-    let content = React.renderToString(<Handler />);
-    res.render('index', { content: content });
+    // react code rendered to string
+    // need to still wrap with Provider
+    let content = React.renderToString(
+      <Provider store={store}>
+        { () => <Handler /> }
+      </Provider>);
+
+    // Grab the initial state from our Redux store
+    const finalState = store.getState();
+
+    // Send the rendered page back to the client
+    res.send(renderFullPage(content, finalState));
   });
+}
+
+function renderFullPage(content, initialState) {
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        <title>GSD - Social Productivity App</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-VA-Compatible", content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      </head>
+      <body>
+        <div id="react-app">${content}</div>
+        <script>
+          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+        </script>
+        <script scr="http://localhost:5001/js/app.js"></script>
+      </body>
+    </html>
+    `;
+}
+
+app.listen(port, (error) => {
+  if (error) {
+    console.error(error);
+  }
+  else {
+    console.info(`Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`);
+  }
 });
 
-//app.use('/', itemRoutes);
-//app.use('*', function(req, res) {
-//  res.status(404).json({message: 'Not Found' });
-//});
-
-var server = app.listen(5000, function() {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-});
-
-exports.app = app;
+export default app;

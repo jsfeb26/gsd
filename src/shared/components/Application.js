@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AddItem from './AddItem';
 import ItemList from './ItemList';
 import Footer from './Footer';
+import Header from './Header';
 import * as ItemActions from '../actions/ItemActions';
 
 class Application extends Component {
@@ -11,8 +12,13 @@ class Application extends Component {
     // Injected by connect() call:
     // const { dispatch, visibleItems, visibilityFilter } = this.props;
     return (
-      <div>
-        Test
+      <div className="row panel panel-default">
+        <div className="col-md-8 col-md-offset-2">
+          <h2 className="text-center">
+            GSD List
+          </h2>
+          <Header />
+        </div>
       </div>
     );
   }

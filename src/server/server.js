@@ -2,6 +2,7 @@ require('./db/connect'); // connects to the mongo database
 import express from "express";
 import bodyParser from "body-parser";
 import qs from 'qs';
+import path from 'path';
 import React from "react";
 import Router from "react-router";
 import { Provider } from 'react-redux';
@@ -11,6 +12,9 @@ import configureStore from '../shared/store/configureStore';
 
 const app = express();
 const port = 5000;
+app.set('views', './views');
+app.set('view engine', 'jade');
+// app.use(require('serve-static')(path.join(__dirname, 'dist')));
 
 // app.use(bodyParser.json());
 // app.use(express.static('public'));
@@ -42,7 +46,8 @@ function handleRender(req, res) {
     const finalState = store.getState();
 
     // Send the rendered page back to the client
-    res.send(renderFullPage(content, finalState));
+    // res.send(renderFullPage(content, finalState));
+    res.render('index', { content: content });
   });
 }
 
@@ -62,7 +67,7 @@ function renderFullPage(content, initialState) {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-        <script scr="http://localhost:5001/js/app.js"></script>
+        <script scr="http://localhost:5001/dist/bundle.js"></script>
       </body>
     </html>
     `;

@@ -1,15 +1,19 @@
 // Simply creates WebpackDevServer and runs it on localhost:5001
 // Calls config file from webpack.config.dev.js
 
-import WebpackDevServer from "webpack-dev-server";
-import webpack from "webpack";
-import config from "../../webpack.config.dev";
+var WebpackDevServer = require("webpack-dev-server");
+var webpack = require("webpack");
+var config = require("../../webpack.config.dev");
 
-var server = new WebpackDevServer(webpack(config), {
+new WebpackDevServer(webpack(config), {
   // webpack-dev-server options
   publicPath: config.output.publicPath,
   hot: true,
   stats: { colors: true },
-});
+}).listen(config.devServerPort, 'localhost', function (err, result) {
+  if (err) {
+    console.error(err);
+  }
 
-server.listen(5001, "localhost", function() {});
+  console.log('Hot load server listening on port ' + config.devServerPort);
+});

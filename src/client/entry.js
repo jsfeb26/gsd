@@ -1,6 +1,5 @@
 // Entry point for client
 
-import 'babel-core/polyfill';
 import React from "react";
 import Router from "react-router";
 import { Provider } from 'react-redux';
@@ -9,10 +8,10 @@ import rootReducer from '../shared/reducers/index';
 import routes from '../shared/routes';
 
 // get initial state from server render initial state
-// const initialState = window.__INITIAL_STATE__;
+ const initialState = window.__INITIAL_STATE__;
 
 // redux store
-const store = configureStore();
+const store = configureStore(initialState);
 
 // element where we mount React JavaScript
 let rootElement = document.getElementById('react-app');

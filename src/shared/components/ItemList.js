@@ -15,7 +15,7 @@ export default class ItemList extends Component {
     else {
       return this.props.items.map(item => {
         return <li>
-          Hello {item.text}
+          {item.text}
         </li>
       });
     }

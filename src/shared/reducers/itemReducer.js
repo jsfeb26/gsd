@@ -4,6 +4,7 @@ export default function items(state=[], action) {
   switch(action.type) {
     case ADD_ITEM:
       return [...state, {
+        id: state.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1,
         text: action.value,
         completed: false
       }];

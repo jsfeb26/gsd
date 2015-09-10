@@ -9,13 +9,14 @@ import rootReducer from '../shared/reducers/index';
 import routes from '../shared/routes';
 
 // get initial state from server render initial state
-const initialState = window.__INITIAL_STATE__;
+// const initialState = window.__INITIAL_STATE__;
 
 // redux store
-const store = configureStore(initialState);
+const store = configureStore();
 
 // element where we mount React JavaScript
-let rootElement = document.getElementById('app');
+let rootElement = document.getElementById('react-app');
+console.log('Hellow');
 
 Router.run(routes, Router.HistoryLocation, (Handler, state) => {
   // creating react component based on route and react-router routes

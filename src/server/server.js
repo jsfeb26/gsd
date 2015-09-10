@@ -46,8 +46,8 @@ function handleRender(req, res) {
     const finalState = store.getState();
 
     // Send the rendered page back to the client
-    // res.send(renderFullPage(content, finalState));
-    res.render('index', { content: content });
+    res.send(renderFullPage(content, finalState));
+    // res.render('index', { content: content });
   });
 }
 
@@ -67,7 +67,7 @@ function renderFullPage(content, initialState) {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-        <script scr="http://localhost:5001/dist/bundle.js"></script>
+        <script src="http://localhost:5001/dist/bundle.js"></script>
       </body>
     </html>
     `;

@@ -5,12 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf lib",
-    "watch-js": "./node_modules/.bin/babel src -d lib --experimental -w",
-    "dev-server": "node lib/server/webpack",
-    "server": "nodemon lib/server/server",
-    "start": "npm run watch-js & npm run dev-server & npm run server",
-    "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental"
+    "dev-server": "webpack-dev-server --config webpack.config.dev.js --hot --port 5001",
+    "server": "nodemon --exec babel-node src/server/server",
+    "start": "npm run dev-server & npm run server"
   },
   "repository": {
     "type": "git",
@@ -29,9 +26,9 @@
   },
   "homepage": "https://github.com/jsfeb26/gsd#readme",
   "dependencies": {
+    "babel-runtime": "^5.8.20",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "jade": "^1.11.0",
     "mongoose": "^4.1.3",
     "qs": "^5.0.0",
     "react-redux": "^2.0.0",

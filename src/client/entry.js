@@ -15,7 +15,6 @@ const store = configureStore(initialState);
 
 // element where we mount React JavaScript
 let rootElement = document.getElementById('react-app');
-console.log('Hellow');
 
 Router.run(routes, Router.HistoryLocation, (Handler, state) => {
   // creating react component based on route and react-router routes

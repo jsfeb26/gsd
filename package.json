@@ -4,7 +4,8 @@
   "description": "Get Stuff Done App",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel/register --recursive",
+    "test:watch": "npm run test -- --watch",
     "dev-server": "webpack-dev-server --config webpack.config.dev.js --hot --port 5001",
     "server": "nodemon --exec babel-node src/server/server",
     "start": "npm run dev-server & npm run server"

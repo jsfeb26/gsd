@@ -17,10 +17,26 @@ export function completeItem(index) {
 
 //========== async ==============================
 export const SEND_NEW_ITEM = 'SEND_NEW_ITEM';
+export const REQUEST_ITEMS = 'REQUEST_ITEMS';
+export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
 
 export function sendNewItem(text) {
   return {
     type: SEND_NEW_ITEM,
     value: text
-  }
+  };
+}
+
+export function requestItems() {
+  return {
+    type: REQUEST_ITEMS
+  };
+}
+
+export function receiveItems(items) {
+  return {
+    type: RECEIVE_ITEMS,
+    itemList: items,
+    receivedAt: Date.now()
+  };
 }

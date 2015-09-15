@@ -40,3 +40,20 @@ export function receiveItems(items) {
     receivedAt: Date.now()
   };
 }
+
+// ===== thunk action creators ==================
+export function sendNewItemAPI(text) {
+  return dispatch => {
+    dispatch(sendNewItem(text));
+    // send item to server
+  }
+}
+
+export function requestItemsAPI() {
+  return dispatch => {
+    dispatch(requestItems());
+    // return fetch(`http://localhost:5000/api`)
+    //   .then(response => response.json())
+    //   .then(json => dispatch(receiveItems(json)));
+  };
+}

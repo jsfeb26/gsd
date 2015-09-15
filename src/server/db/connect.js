@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-import env from '../environment';
-// import config from './config.json';
+import config from '../../config';
 
-// mongoose.connect(config[env].url);
-mongoose.connect("mongodb://localhost/gsd-dev");
+mongoose.connect(config.db_url);

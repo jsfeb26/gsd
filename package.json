@@ -7,7 +7,7 @@
     "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "npm run test -- --watch",
     "dev-server": "webpack-dev-server --config webpack.config.dev.js --hot --port 5001",
-    "server": "nodemon --exec babel-node src/server/server",
+    "server": "nodemon --exec babel-node src/server",
     "start": "npm run dev-server & npm run server"
   },
   "repository": {
@@ -29,12 +29,16 @@
   "dependencies": {
     "babel-runtime": "^5.8.20",
     "body-parser": "^1.13.3",
+    "compression": "^1.5.2",
     "express": "^4.13.3",
+    "http-proxy": "^1.11.2",
     "mongoose": "^4.1.3",
+    "pretty-error": "^1.2.0",
     "qs": "^5.0.0",
     "react-redux": "^2.0.0",
     "redux": "^2.0.0",
     "redux-thunk": "^0.1.0",
+    "serve-favicon": "^2.3.0",
     "serve-static": "^1.10.0"
   },
   "devDependencies": {

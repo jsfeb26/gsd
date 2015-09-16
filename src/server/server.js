@@ -9,11 +9,10 @@ import { Provider } from 'react-redux';
 import routes from "../shared/routes"; // react-router routes
 import rootReducer from '../shared/reducers/index';
 import configureStore from '../shared/store/configureStore';
+import config from '../config';
 
 const app = express();
-const port = 5000;
-app.set('views', './views');
-app.set('view engine', 'jade');
+const port = config.port;
 // app.use(require('serve-static')(path.join(__dirname, 'dist')));
 
 // app.use(bodyParser.json());
@@ -47,7 +46,6 @@ function handleRender(req, res) {
 
     // Send the rendered page back to the client
     res.send(renderFullPage(content, finalState));
-    // res.render('index', { content: content });
   });
 }
 

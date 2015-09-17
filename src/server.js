@@ -54,6 +54,12 @@ proxy.on('error', (error, req, res) => {
 // Route Handler for all routes other then /api/*
 // And then use react-router to handle all routes
 app.use((req, res) => {
+  // if (__DEVELOPMENT__) {
+  //   // Do not cache webpack stats: the script file would change since
+  //   // hot module replacement is enabled in the development env
+  //   webpackIsomorphicTools.refresh();
+  // }
+
   const params = qs.parse(req.query);
 
   let initialState = {};

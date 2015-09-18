@@ -3,7 +3,7 @@
 import { Route } from "react-router";
 import React from "react";
 
-import Application from "./components/Application";
+import Application from "./shared/components/Application";
 
 export default (
   <Route handler={ Application } path="/">

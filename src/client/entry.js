@@ -4,7 +4,7 @@ import Router from "react-router";
 import { Provider } from 'react-redux';
 import configureStore from '../shared/store/configureStore';
 import rootReducer from '../shared/reducers/index';
-import routes from '../shared/routes';
+import routes from '../routes';
 
 // get initial state from server render initial state
  const initialState = window.__INITIAL_STATE__;

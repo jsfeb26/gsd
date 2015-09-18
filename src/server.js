@@ -10,7 +10,7 @@ import PrettyError from 'pretty-error';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 
-import routes from "./shared/routes"; // react-router routes
+import routes from "./routes"; // react-router routes
 import rootReducer from './shared/reducers/index';
 import configureStore from './shared/store/configureStore';
 import config from './config';

@@ -2,15 +2,20 @@
 import React from "react";
 import Router from "react-router";
 import { Provider } from 'react-redux';
-import configureStore from '../shared/store/configureStore';
+
+import createStore from '../redux/createStore';
 import rootReducer from '../shared/reducers/index';
 import routes from '../routes';
+import ApiClient from '../helper/ApiClient';
+// import universalRouter from '../helper/universalRouter';
+
+const client = new ApiClient();
 
 // get initial state from server render initial state
- const initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__;
 
 // redux store
-const store = configureStore(initialState);
+const store = createStore(client, initialState);
 
 // element where we mount React JavaScript
 let rootElement = document.getElementById('react-app');

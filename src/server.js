@@ -3,7 +3,7 @@ import Express from "express";
 import qs from 'qs';
 import path from 'path';
 import React from "react";
-import Router from "react-router";
+import Router, { Location } from "react-router";
 import { Provider } from 'react-redux';
 import httpProxy from 'http-proxy';
 import PrettyError from 'pretty-error';
@@ -12,8 +12,9 @@ import compression from 'compression';
 
 import routes from "./routes"; // react-router routes
 import rootReducer from './shared/reducers/index';
-import configureStore from './shared/store/configureStore';
+import createStore from './redux/createStore';
 import config from './config';
+import ApiClient from './helper/ApiClient';
 
 // Settings from config file
 const port = config.port;
@@ -61,11 +62,9 @@ app.use((req, res) => {
   // }
 
   const params = qs.parse(req.query);
-
-  let initialState = {};
-
-  // Create a new Redux store instance
-  const store = configureStore(initialState);
+  const client = new ApiClient(req);
+  const store = createStore(client); // Create a new Redux store instance
+  // const location = new Location(req.path, req.query);
 
   // use req.url to render a string based on react-router routes
   // Handler is built in to react-router

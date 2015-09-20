@@ -26,15 +26,9 @@ const meta = {
   }
 };
 
-@connect(
-  state => ({ items: state.items })
-  // dispatch => bindActionCreators(ItemActions, dispatch)
-)
-
 export default class App extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
-    items: PropTypes.array.isRequired
+    children: PropTypes.object.isRequired
   }
 
   static contextTypes = {
@@ -60,11 +54,9 @@ export default class App extends Component {
   // static fetchData(store) {
   //   console.log('fetinch mad data');
   // }
-  // <Header addItem={this.props.ItemActions.addItem} />
-  // <ItemList items={items} />
 
   render() {
-    const { items } = this.props;
+    const { children } = this.props;
 
     return (
       <div className="row panel panel-default">
@@ -72,7 +64,7 @@ export default class App extends Component {
           <h2 className="text-center">
             GSD List
           </h2>
-          {this.props.children}
+          {children}
         </div>
       </div>
     );

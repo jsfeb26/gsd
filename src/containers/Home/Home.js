@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
+import Header from '../../components/Header';
+import ItemList from '../../components/ItemList';
+import * as ItemActions from '../../shared/actions/ItemActions';
+
+@connect(
+  state => ({ items: state.items }),
+  dispatch => bindActionCreators(ItemActions, dispatch)
+)
 export default class Home extends Component {
   render() {
+    const { items } = this.props;
     return (
       <div>
-        Hello World
+        <Header addItem={this.props.addItem} />
+        <ItemList items={items} />
       </div>
     );
   }

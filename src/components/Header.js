@@ -7,6 +7,10 @@ export default class Header extends Component {
       text: this.props.text || ""
     };
   }
+  static propTypes = {
+    text: PropTypes.string,
+    addItem: PropTypes.func.isRequired
+  };
 
   handleClick () {
     this.saveItem();
@@ -23,8 +27,10 @@ export default class Header extends Component {
   }
 
   saveItem () {
-    this.props.addItem(this.state.text);
-    this.setState({ text: "" });
+    if (this.state.text.length > 0) {
+      this.props.addItem(this.state.text);
+      this.setState({ text: "" });
+    }
   }
 
   render() {
@@ -35,6 +41,7 @@ export default class Header extends Component {
         onKeyDown={this.handleEnter.bind(this)}
         type="text"
         className="form-control" />
+
       <span className="input-group-btn">
         <button
           onClick={this.handleClick.bind(this)}

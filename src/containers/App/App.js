@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { createTransitionHook } from '../../helper/universalRouter';
-import AddItem from '../../shared/components/AddItem';
-import ItemList from '../../shared/components/ItemList';
-import Footer from '../../shared/components/Footer';
-import Header from '../../shared/components/Header';
+import { createTransitionHook } from '../../helpers/universalRouter';
+import AddItem from '../../components/AddItem';
+import ItemList from '../../components/ItemList';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import * as ItemActions from '../../shared/actions/ItemActions';
 
 const title = 'GSD - Social Productivity App';

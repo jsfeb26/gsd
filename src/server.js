@@ -1,4 +1,4 @@
-require('./server/db/connect'); // connects to the mongo database
+// require('./api/db/connect'); // connects to the mongo database
 import Express from "express";
 import qs from 'qs';
 import path from 'path';
@@ -15,8 +15,8 @@ import routes from "./routes"; // react-router routes
 import rootReducer from './shared/reducers/index';
 import createStore from './redux/createStore';
 import config from './config';
-import ApiClient from './helper/ApiClient';
-import universalRouter from './helper/universalRouter.js';
+import ApiClient from './helpers/ApiClient';
+import universalRouter from './helpers/universalRouter.js';
 
 // Settings from config file
 const port = config.port;

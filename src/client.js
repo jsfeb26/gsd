@@ -5,8 +5,8 @@ import Location from 'react-router/lib/Location';
 import queryString from 'query-string';
 
 import createStore from './redux/createStore';
-import ApiClient from './helper/ApiClient';
-import universalRouter from './helper/universalRouter';
+import ApiClient from './helpers/ApiClient';
+import universalRouter from './helpers/universalRouter';
 
 const client = new ApiClient();
 const history = new BrowserHistory();

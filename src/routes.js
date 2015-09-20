@@ -7,7 +7,7 @@ import {
   App,
   Home
 } from './containers';
-// import Application from "./shared/components/Application";
+// import Application from "./components/Application";
 
 // export default (
 //   <Route handler={ Application } paht="/" />

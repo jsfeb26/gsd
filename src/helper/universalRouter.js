@@ -1,7 +1,7 @@
 import React from 'react';
 import Router from 'react-router';
 import createRoutes from '../routes';
-import { Provider } from 'redux';
+import { Provider } from 'react-redux';
 
 const getFetchData = (component = {}) => {
   // recursively go through all of the components in the routes
@@ -11,7 +11,7 @@ const getFetchData = (component = {}) => {
 };
 
 export function createTransitionHook(store) {
-  return (nextState, transition, callback) {
+  return (nextState, transition, callback) => {
     const { params, location: { query } } = nextState;
     const promises = nextState.branch
       .map(route => route.component)                              // pull out individual route components

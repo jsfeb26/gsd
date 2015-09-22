@@ -1,6 +1,6 @@
-var express = require('express');
-var Item = require('../services/item');
-var router = express.Router();
+import express from require('express');
+import Item from require('../services/item');
+import router from express.Router();
 
 router.get('/items', function(req, res) {
     Item.list(function(items) {
@@ -20,7 +20,7 @@ router.post('/items', function(req, res) {
 
 router.delete('/items/:name', function(req, res) {
     var objId = req.params.name;
-    
+
     Item.remove(objId, function(item) {
         res.status(200).json(item);
     }, function(err) {
@@ -30,7 +30,7 @@ router.delete('/items/:name', function(req, res) {
 
 router.put('/items/:name', function(req, res) {
    var objId = req.params.name;
-   
+
    Item.edit(objId, req.body.name, function(item) {
        res.status(200).json(item);
    }, function(err) {
@@ -38,4 +38,4 @@ router.put('/items/:name', function(req, res) {
    });
 });
 
-module.exports = router;
+ export default router;

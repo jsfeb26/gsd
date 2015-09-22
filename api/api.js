@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import config from './config';
 import PrettyError from 'pretty-error';
 
+import * as actions from './actions/index';
+
 const pretty = new PrettyError();
 const app = express();
 app.use(session({
@@ -19,8 +21,7 @@ app.use((req, res) => {
 
   let action = false;
   let params = null
-  // let apiActions = actions;
-  let apiActions = {};
+  let apiActions = actions;
   let sliceIndex = 0;
 
   for (let actionName of matcher) {
@@ -38,7 +39,18 @@ app.use((req, res) => {
   }
 
   if (action && typeof action == 'function') {
-
+    action(req, params)
+      .then((result) => {
+        res.json(result);
+      }, (reason) => {
+        if (reason && reason.redirect) {
+          res.redirect(reason.redirect);
+        }
+        else {
+          console.error('API ERROR:', pretty.render(reason));
+          res.status(reason.status || 500).json(reason);
+        }
+      });
   }
   else {
     res.status(404).end('NOT FOUND');

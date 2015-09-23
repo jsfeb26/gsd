@@ -1,9 +1,9 @@
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
-import config from './config';
 import PrettyError from 'pretty-error';
 
+import config from './config';
 import * as actions from './actions/index';
 
 const pretty = new PrettyError();
@@ -21,7 +21,8 @@ app.use((req, res) => {
 
   let action = false;
   let params = null
-  let apiActions = actions;
+  // let apiActions = actions;
+  let apiActions = {};
   let sliceIndex = 0;
 
   for (let actionName of matcher) {

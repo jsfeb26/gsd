@@ -12,12 +12,15 @@ class ApiClient_ {
     // loop through each request method
     // return a new promise for each one
     // if the request is successfull then resolve each promise
+    console.log('apiclient');
     ['get', 'post', 'put', 'patch', 'del']
       .forEach((method) => {
         this[method] = (path, options) => {
           return new Promise((resolve, reject) => {
+            console.log('apiClient ' + 'promise');
+            console.log(path);
             const request = superagent[method](this.formatUrl(path));
-
+            console.log(request);
             if (options && options.params) {
               request.query(options.params);
             }
@@ -49,10 +52,13 @@ class ApiClient_ {
 
   formatUrl(path) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path;
+    console.log(adjustedPath);
     if (isServer) {
+      console.log('isServer');
       // Preped host and port of the API server to the path
       return 'http://localhost:' + config.apiPort + adjustedPath;
     }
+    console.log('api');
 
     // Prepend '/api' to the relative URL, to proxy to API server
     return '/api' + adjustedPath;

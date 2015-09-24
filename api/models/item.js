@@ -4,4 +4,6 @@ var ItemSchema = new Mongoose.Schema({
   name: { type: String, required: true }
 });
 
-export Item = Mongoose.model('Item', ItemSchema);
+let Item = Mongoose.model('Item', ItemSchema);
+
+export default Item;

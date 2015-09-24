@@ -1,10 +1,16 @@
 export const ADD_ITEM = 'ADD_ITEM';
 export const COMPLETE_ITEM = 'COMPLETE_ITEM';
 
+export const SEND_NEW_ITEM = 'SEND_NEW_ITEM';
+export const REQUEST_ITEMS = 'REQUEST_ITEMS';
+export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
+
 export function addItem(text) {
   return {
-    type: ADD_ITEM,
-    value: text
+    // type: ADD_ITEM,
+    // value: text,
+    types: [SEND_NEW_ITEM, REQUEST_ITEMS, RECEIVE_ITEMS],
+    promise: (client) => client.get('/addItem')
   };
 }
 
@@ -16,9 +22,6 @@ export function completeItem(index) {
 }
 
 //========== async ==============================
-export const SEND_NEW_ITEM = 'SEND_NEW_ITEM';
-export const REQUEST_ITEMS = 'REQUEST_ITEMS';
-export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
 
 export function sendNewItem(text) {
   return {

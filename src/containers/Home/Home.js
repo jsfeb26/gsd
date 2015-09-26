@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 
 import Header from '../../components/Header';
 import ItemList from '../../components/ItemList';
+import { getItems as getItems } from '../../shared/actions/ItemActions';
 import * as ItemActions from '../../shared/actions/ItemActions';
 
 @connect(
@@ -14,7 +15,12 @@ import * as ItemActions from '../../shared/actions/ItemActions';
 export default class Home extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    addItem: PropTypes.func.isRequired
+    addItem: PropTypes.func.isRequired,
+    getItems: PropTypes.func.isRequired
+  }
+
+  static fetchData(store) {
+    return store.dispatch(getItems());
   }
 
   render() {

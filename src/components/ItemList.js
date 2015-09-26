@@ -14,7 +14,7 @@ export default class ItemList extends Component {
     }
     else {
       return this.props.items.map(item => {
-        return <li>
+        return <li key={item.id}>
           {item.text}
         </li>
       });

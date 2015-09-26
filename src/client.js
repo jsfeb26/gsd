@@ -8,7 +8,7 @@ import createStore from './redux/createStore';
 import ApiClient from './helpers/ApiClient';
 import universalRouter from './helpers/universalRouter';
 
-const client = new ApiClient(true);
+const client = new ApiClient(false);
 const history = new BrowserHistory();
 
 // get initial state from server render initial state
@@ -30,19 +30,6 @@ universalRouter(location, history, store)
   }, (error) => {
     console.error(error);
   });
-
-// Router.run(routes, Router.HistoryLocation, (Handler, state) => {
-//   // creating react component based on route and react-router routes
-//   // Mount component onto rootElement
-//   // Again Handler is a built in react-router componenent
-//   // Instead of renderToString like in server.js we use React.render
-//   React.render(
-//     <Provider store={store}>
-//       {() => <Handler />}
-//     </Provider>,
-//     rootElement
-//   );
-// });
 
 // if (process.env.NODE_ENV !== 'production') {
 //   window.React = React; // enable debugger

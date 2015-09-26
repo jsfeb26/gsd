@@ -4,13 +4,19 @@ export const COMPLETE_ITEM = 'COMPLETE_ITEM';
 export const SEND_NEW_ITEM = 'SEND_NEW_ITEM';
 export const REQUEST_ITEMS = 'REQUEST_ITEMS';
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
+export const REQUEST_FAIL = 'REQUEST_FAIL';
 
 export function addItem(text) {
   return {
-    // type: ADD_ITEM,
-    // value: text,
     types: [SEND_NEW_ITEM, REQUEST_ITEMS, RECEIVE_ITEMS],
     promise: (client) => client.get('/item/addItem')
+  };
+}
+
+export function getItems() {
+  return {
+    types: [REQUEST_ITEMS, RECEIVE_ITEMS, REQUEST_FAIL],
+    promise: (client) => client.get('/item/getItems')
   };
 }
 

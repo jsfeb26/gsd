@@ -10,7 +10,7 @@ export function addItem(text) {
     // type: ADD_ITEM,
     // value: text,
     types: [SEND_NEW_ITEM, REQUEST_ITEMS, RECEIVE_ITEMS],
-    promise: (client) => client.get('/addItem')
+    promise: (client) => client.get('/item/addItem')
   };
 }
 

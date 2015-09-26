@@ -21,8 +21,7 @@ app.use((req, res) => {
 
   let action = false;
   let params = null
-  // let apiActions = actions;
-  let apiActions = {};
+  let apiActions = actions;
   let sliceIndex = 0;
 
   for (let actionName of matcher) {

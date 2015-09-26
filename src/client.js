@@ -8,7 +8,7 @@ import createStore from './redux/createStore';
 import ApiClient from './helpers/ApiClient';
 import universalRouter from './helpers/universalRouter';
 
-const client = new ApiClient();
+const client = new ApiClient(true);
 const history = new BrowserHistory();
 
 // get initial state from server render initial state

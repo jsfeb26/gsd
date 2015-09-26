@@ -8,19 +8,17 @@ import config from '../config';
  * Remove it at your own risk.
  */
 class ApiClient_ {
-  constructor(req) {
+  constructor(isServer, req) {
+    const IsServer = isServer;
     // loop through each request method
     // return a new promise for each one
     // if the request is successfull then resolve each promise
-    console.log('apiclient');
     ['get', 'post', 'put', 'patch', 'del']
       .forEach((method) => {
         this[method] = (path, options) => {
           return new Promise((resolve, reject) => {
-            console.log('apiClient ' + 'promise');
-            console.log(path);
-            const request = superagent[method](this.formatUrl(path));
-            console.log(request);
+            const request = superagent[method](this.formatUrl(path, IsServer));
+
             if (options && options.params) {
               request.query(options.params);
             }
@@ -50,15 +48,13 @@ class ApiClient_ {
       });
   }
 
-  formatUrl(path) {
+  formatUrl(path, IsServer) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path;
-    console.log(adjustedPath);
-    if (isServer) {
-      console.log('isServer');
+
+    if (IsServer) {
       // Preped host and port of the API server to the path
       return 'http://localhost:' + config.apiPort + adjustedPath;
     }
-    console.log('api');
 
     // Prepend '/api' to the relative URL, to proxy to API server
     return '/api' + adjustedPath;

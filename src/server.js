@@ -58,7 +58,7 @@ proxy.on('error', (error, req, res) => {
 // Route Handler for all routes other then /api/*
 // And then use react-router to handle all routes
 app.use((req, res) => {
-  const client = new ApiClient(req);
+  const client = new ApiClient(true, req);
   const store = createStore(client); // Create a new Redux store instance
   const location = new Location(req.path, req.query);
 

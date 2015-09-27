@@ -1,7 +1,8 @@
 import Mongoose from 'mongoose';
 
 var ItemSchema = new Mongoose.Schema({
-  name: { type: String, required: true }
+  text: { type: String, required: true },
+  completed: { type: Boolean, required: true, default: false }
 });
 
 let Item = Mongoose.model('Item', ItemSchema);

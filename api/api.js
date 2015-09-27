@@ -1,3 +1,4 @@
+require('./db/connect'); // connects to the mongo database
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';

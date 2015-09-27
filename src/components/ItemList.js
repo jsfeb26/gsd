@@ -14,7 +14,7 @@ export default class ItemList extends Component {
     }
     else {
       return this.props.items.map(item => {
-        return <li key={item.id}>
+        return <li key={item._id}>
           {item.text}
         </li>
       });
@@ -32,6 +32,7 @@ export default class ItemList extends Component {
 
 ItemList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }).isRequired).isRequired

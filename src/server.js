@@ -1,4 +1,3 @@
-// require('./api/db/connect'); // connects to the mongo database
 import Express from "express";
 import qs from 'qs';
 import path from 'path';

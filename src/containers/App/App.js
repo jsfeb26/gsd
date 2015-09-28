@@ -51,10 +51,6 @@ export default class App extends Component {
     router.removeTransitionHook(this.transitionHook);
   }
 
-  // static fetchData(store) {
-  //   console.log('fetinch mad data');
-  // }
-
   render() {
     const { children } = this.props;
 

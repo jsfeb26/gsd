@@ -1,17 +1,12 @@
-export const ADD_ITEM = 'ADD_ITEM';
-export const COMPLETE_ITEM = 'COMPLETE_ITEM';
-
-export const SEND_NEW_ITEM = 'SEND_NEW_ITEM';
 export const REQUEST_ITEMS = 'REQUEST_ITEMS';
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
 export const REQUEST_FAIL = 'REQUEST_FAIL';
 
-export function addItem(text) {
-  return {
-    types: [SEND_NEW_ITEM, REQUEST_ITEMS, RECEIVE_ITEMS],
-    promise: (client) => client.get('/item/addItem')
-  };
-}
+export const ADD_ITEM = 'ADD_ITEM';
+export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
+export const ADD_ITEM_FAIL = 'ADD_ITEM_FAIL';
+
+export const COMPLETE_ITEM = 'COMPLETE_ITEM';
 
 export function getItems() {
   return {
@@ -20,49 +15,18 @@ export function getItems() {
   };
 }
 
+export function addItem(text) {
+  return {
+    types: [ADD_ITEM, RECEIVE_ITEMS, ADD_ITEM_FAIL],
+    promise: (client) => client.post('/item/addItem', {
+      data: { text: text }
+    })
+  };
+}
+
 export function completeItem(index) {
   return {
     type: COMPLETE_ITEM,
     id: index
-  };
-}
-
-//========== async ==============================
-
-export function sendNewItem(text) {
-  return {
-    type: SEND_NEW_ITEM,
-    value: text
-  };
-}
-
-export function requestItems() {
-  return {
-    type: REQUEST_ITEMS
-  };
-}
-
-export function receiveItems(items) {
-  return {
-    type: RECEIVE_ITEMS,
-    itemList: items,
-    receivedAt: Date.now()
-  };
-}
-
-// ===== thunk action creators ==================
-export function sendNewItemAPI(text) {
-  return dispatch => {
-    dispatch(sendNewItem(text));
-    // send item to server
-  }
-}
-
-export function requestItemsAPI() {
-  return dispatch => {
-    dispatch(requestItems());
-    // return fetch(`http://localhost:5000/api`)
-    //   .then(response => response.json())
-    //   .then(json => dispatch(receiveItems(json)));
   };
 }

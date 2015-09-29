@@ -5,5 +5,5 @@ export default function addItem(req) {
   return Item.create({
     text: req.body['text'],
     completed: false
-  }).then(() => { return Item.find().exec() });
+  }).then(() => { return getItems() });
 }

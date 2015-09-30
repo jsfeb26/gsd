@@ -2,7 +2,7 @@ import Item from '../../models/item';
 import getItems from './getItems';
 
 export default function addItem(req) {
-  const newText = req.body['text'];
+  const newText = req.body['text'].trim();
 
   return Item.create({
     text: newText,

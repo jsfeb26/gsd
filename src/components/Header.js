@@ -17,7 +17,7 @@ export default class Header extends Component {
   }
 
   handleInputChange (e) {
-    this.setState({ text: e.target.value.trim() });
+    this.setState({ text: e.target.value });
   }
 
   handleEnter (e) {

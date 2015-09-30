@@ -10,24 +10,56 @@ import {
   REQUEST_FAIL
 } from '../actions/ItemActions.js';
 
-export default function items(state=[], action = {}) {
+const initialState = {
+  items: [],
+  loaded: false,
+  loading: false,
+  editing: {},
+  saveError: {}
+};
+
+export default function Item(state=initialState, action = {}) {
   switch(action.type) {
     case ADD_ITEM:
-      return state;
+      return {
+        ...state,
+        loading: true
+      }
     case SAVE_ITEM:
-      return state;
+      return {
+        ...state,
+        loading: true
+      }
     case REMOVE_ITEM:
-      return state;
+      return {
+        ...state,
+        loading: true
+      }
     case REQUEST_ITEMS:
-      return state;
+      return {
+        ...state,
+        loading: true
+      }
     case RECEIVE_ITEMS:
       if (!action || !action.result || !action.result) {
-        return state;
+        return {
+          ...state,
+          loading: false
+        }
       }
 
-      return action.result;
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        items: action.result
+      }
     case REQUEST_FAIL:
-      return state;
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
     default:
       return state;
   }

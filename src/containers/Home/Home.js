@@ -9,7 +9,7 @@ import { getItems as getItems } from '../../shared/actions/ItemActions';
 import * as ItemActions from '../../shared/actions/ItemActions';
 
 @connect(
-  state => ({ items: state.items }),
+  state => ({ items: state.Item.items }),
   dispatch => bindActionCreators(ItemActions, dispatch)
 )
 export default class Home extends Component {

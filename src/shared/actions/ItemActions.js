@@ -3,10 +3,13 @@ export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
 export const REQUEST_FAIL = 'REQUEST_FAIL';
 
 export const ADD_ITEM = 'ADD_ITEM';
-export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_ITEM_FAIL = 'ADD_ITEM_FAIL';
 
-export const COMPLETE_ITEM = 'COMPLETE_ITEM';
+export const SAVE_ITEM = 'SAVE_ITEM';
+export const SAVE_ITEM_FAIL = 'SAVE_ITEM_FAIL';
+
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const REMOVE_ITEM_FAIL = 'REMOVE_ITEM_FAIL';
 
 export function getItems() {
   return {
@@ -24,9 +27,29 @@ export function addItem(text) {
   };
 }
 
-export function completeItem(index) {
+export function editItem(item) {
   return {
-    type: COMPLETE_ITEM,
-    id: index
+    types: [SAVE_ITEM, RECEIVE_ITEMS, SAVE_ITEM_FAIL],
+    promise: (client) => client.put('/item/saveItem', {
+      data: item
+    })
+  };
+}
+
+export function completeItem(id) {
+  return {
+    types: [SAVE_ITEM, RECEIVE_ITEMS, SAVE_ITEM_FAIL],
+    promise: (client) => client.put('/item/saveItem', {
+      data: item
+    })
+  };
+}
+
+export function removeItem(id) {
+  return {
+    types: [REMOVE_ITEM, RECEIVE_ITEMS, REMOVE_ITEM_FAIL],
+    promise: (client) => client.del('item/removeItem', {
+      data: { _id: id }
+    })
   };
 }

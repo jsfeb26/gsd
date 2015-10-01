@@ -11,7 +11,7 @@ import compression from 'compression';
 import Location from 'react-router/lib/Location';
 
 import routes from "./routes"; // react-router routes
-import rootReducer from './shared/reducers/index';
+import rootReducer from './redux/reducers/index';
 import createStore from './redux/createStore';
 import config from './config';
 import ApiClient from './helpers/ApiClient';

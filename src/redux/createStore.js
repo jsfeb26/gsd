@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 // import thunk from 'redux-thunk'; // redux middleware for async actions
-import rootReducer from '../shared/reducers';
+import rootReducer from '../redux/reducers';
 import createMiddleware from './middleware/clientMiddleware';
 
 export default function createApiClientStore(client, data) {
@@ -19,8 +19,8 @@ export default function createApiClientStore(client, data) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../shared/reducers', () => {
-      const nextRootReducer = require('../shared/reducers');
+    module.hot.accept('../redux/reducers', () => {
+      const nextRootReducer = require('../redux/reducers');
       store.replaceReducer(nextRootReducer);
     });
   }

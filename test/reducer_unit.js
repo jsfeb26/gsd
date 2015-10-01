@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { ADD_ITEM, COMPLETE_ITEM } from '../src/shared/actions/ItemActions';
-import itemReducer from '../src/shared/reducers/itemReducer';
+import { ADD_ITEM, COMPLETE_ITEM } from '../src/redux/actions/ItemActions';
+import itemReducer from '../src/redux/reducers/itemReducer';
 
 describe('reducer', () => {
   describe('addItem', () => {

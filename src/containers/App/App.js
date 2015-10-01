@@ -7,7 +7,7 @@ import AddItem from '../../components/AddItem';
 import ItemList from '../../components/ItemList';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import * as ItemActions from '../../shared/actions/ItemActions';
+import * as ItemActions from '../../redux/actions/ItemActions';
 
 const title = 'GSD - Social Productivity App';
 const description = 'Social Productivity App for Getting Things Done';

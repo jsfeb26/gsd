@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { ADD_ITEM, COMPLETE_ITEM } from '../src/shared/actions/ItemActions'
-import { addItem, completeItem } from '../src/shared/actions/ItemActions'
+import { ADD_ITEM, COMPLETE_ITEM } from '../src/redux/actions/ItemActions'
+import { addItem, completeItem } from '../src/redux/actions/ItemActions'
 
 describe('action creators', () => {
   describe('addItem', () => {

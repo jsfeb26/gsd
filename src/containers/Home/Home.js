@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 
 import Header from '../../components/Header';
 import ItemList from '../../components/ItemList';
-import { getItems as getItems } from '../../shared/actions/ItemActions';
-import * as ItemActions from '../../shared/actions/ItemActions';
+import { getItems as getItems } from '../../redux/actions/ItemActions';
+import * as ItemActions from '../../redux/actions/ItemActions';
 
 @connect(
   state => ({ items: state.Item.items }),

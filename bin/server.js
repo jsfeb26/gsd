@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+require('../server.babel');
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 /**
